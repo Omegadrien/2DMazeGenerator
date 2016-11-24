@@ -1,0 +1,92 @@
+﻿<Window x:Class="ProjetLabyrintheWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjetLabyrintheWPF"
+        mc:Ignorable="d"
+        Title="Labyrinthe by Omegadrien, 2016"
+        Height="720"
+        Width="1280"
+        ResizeMode="NoResize"
+        KeyDown="WindowKeyDown">
+    <Grid Name="GridLayout"
+        Margin="0,0,2,0">
+        <Label 
+             x:Name="LabelSizeX" 
+             Height="23"
+		     Margin="3,0,1207,0"
+		     VerticalAlignment="Top"
+		     Width="60"
+             Content="Size X:"/>
+        <Label x:Name="LabelSizeY" 
+             Height="23"
+		     Margin="106,0,1104,0"
+		     VerticalAlignment="Top"
+		     Width="60"
+             Content="Size Y:"/>
+        <Label x:Name="LabelLength" 
+             Height="25"
+		     Margin="213,0,997,0"
+		     VerticalAlignment="Top"
+		     Width="60"
+             Content="Length:"/>
+        <TextBox HorizontalAlignment="Left"
+		     Height="23"
+		     Margin="44,2,0,0"
+		     TextWrapping="Wrap"
+		     Text="32"
+		     VerticalAlignment="Top"
+		     Width="60"
+		     TextChanged="TextBoxSizeX"/>
+        <TextBox HorizontalAlignment="Left"
+		     Height="23"
+		     Margin="149,2,0,0"
+		     TextWrapping="Wrap"
+		     Text="32"
+		     VerticalAlignment="Top"
+		     Width="60"
+		     TextChanged="TextBoxSizeY"/>
+        <TextBox HorizontalAlignment="Left"
+		     Height="23"
+		     Margin="261,2,0,0"
+		     TextWrapping="Wrap"
+		     Text="16"
+		     VerticalAlignment="Top"
+		     Width="60"
+		     TextChanged="TextBoxLength"/>
+        <Button Content="Generate the Maze"
+            Name="buttonGenerateMaze"
+		    HorizontalAlignment="Left"
+		    VerticalAlignment="Top"
+		    Width="120"
+		    Click="ButtonGenerateMaze" Margin="356,0,0,0" Height="25"/>
+        <Button Content="Display the path"
+            Name="buttonDisplayAnswer"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="120"
+            Click="ButtonClickDisplayAnswer" Margin="481,0,0,0" Height="25"/>
+        <Button Content="Disable music"
+            Name="buttonToggleMusic"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Width="132"
+            Click="ButtonClickToggleMusic" Margin="606,0,0,0" Height="25"/>
+        <TextBlock HorizontalAlignment="Left"
+		   Margin="743,0,0,0"
+           FontSize="15"
+		   Text="Use ZQSD to move. Try to reach the exit (yellow square)! Purple is You."
+		   VerticalAlignment="Top"
+		   Padding="0"
+		   Width="503"
+		   Height="25" RenderTransformOrigin="0.533,0.48"/>
+        <ScrollViewer HorizontalScrollBarVisibility="Visible"
+                      VerticalScrollBarVisibility="Visible" Margin="0,36,0,0">
+            <Canvas 
+                Margin="10,30,10,10"
+               x:Name="LayoutRoot">
+            </Canvas>
+        </ScrollViewer>
+    </Grid>
+</Window>
