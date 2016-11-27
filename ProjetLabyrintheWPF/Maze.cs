@@ -3,9 +3,9 @@ using System.Collections;
 
 namespace ProjetLabyrintheWPF
 {
-    class Labyrinthe
+    class Maze
     {
-        private Cellule[,] maze2D = null;
+        private Cell[,] maze2D = null;
 
         private char[] tableOfDirection = null;
 
@@ -15,8 +15,8 @@ namespace ProjetLabyrintheWPF
 
         private Random random = null;
 
-        private Cellule currentCell = null;
-        private Cellule startCell = null;
+        private Cell currentCell = null;
+        private Cell startCell = null;
 
         private int nbTotalCell = 0;  
         private int nbVisitedCell = 0;
@@ -30,7 +30,7 @@ namespace ProjetLabyrintheWPF
         private int nbOfYourMoves = 0;
         public int NbOfYourMoves { get { return this.nbOfYourMoves; } }
 
-        public Labyrinthe(int sizeX, int sizeY)
+        public Maze(int sizeX, int sizeY)
         {
             CreateAndInitialize2DMaze(sizeX, sizeY);
             SetStartAndEndCellsPosition();
@@ -49,12 +49,12 @@ namespace ProjetLabyrintheWPF
             nbOfYourMoves = 0;
             tableOfDirection = new char[4] { 'N', 'E', 'S', 'W' }; //Because it's a 2DMaze
 
-            maze2D = new Cellule[SizeX, SizeY];
+            maze2D = new Cell[SizeX, SizeY];
             for (int x = 0; x < SizeX; x++)
             {
                 for (int y = 0; y < SizeY; y++)
                 {
-                    maze2D[x, y] = new Cellule(x, y);
+                    maze2D[x, y] = new Cell(x, y);
                 }
             }
         }
@@ -96,7 +96,7 @@ namespace ProjetLabyrintheWPF
                     }
                 }
                 if (!pathExistsBetweenCells) {
-                    currentCell = (Cellule)cellStack.Pop();
+                    currentCell = (Cell)cellStack.Pop();
                 }
             }
         }
@@ -127,7 +127,7 @@ namespace ProjetLabyrintheWPF
                 if (!pathExistsBetweenCells)
                 {
                     currentCell.Direction = '0';
-                    currentCell = (Cellule)cellStack.Pop();
+                    currentCell = (Cell)cellStack.Pop();
                 }
             }
             nbPathCell = cellStack.Count;
@@ -159,7 +159,7 @@ namespace ProjetLabyrintheWPF
             }
         }
 
-        private Cellule MoveToNewCell(char direction)
+        private Cell MoveToNewCell(char direction)
         {
             direction = char.ToUpper(direction);
             if (direction == 'N')
@@ -191,7 +191,7 @@ namespace ProjetLabyrintheWPF
 
         private void ReinitiateVistedCellToFalse()
         {           
-            foreach (Cellule cell in maze2D)
+            foreach (Cell cell in maze2D)
                 cell.Visited = false;
         }
 

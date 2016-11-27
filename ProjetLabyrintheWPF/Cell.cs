@@ -1,6 +1,6 @@
 ﻿namespace ProjetLabyrintheWPF
 {
-    class Cellule
+    class Cell
     {
         public int PosX { get; }
         public int PosY { get; }
@@ -30,7 +30,7 @@
         public bool Visited { get; set; }
         public bool YouAreHere { get; set; }
 
-        public Cellule(int posX, int posY)
+        public Cell(int posX, int posY)
         {
             this.PosX = posX;
             this.PosY = posY;

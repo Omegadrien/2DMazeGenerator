@@ -1,6 +1,6 @@
 # 2DMaze Generator
 
-A 2D maze generator made in C#. It cans generate a perfect (random) maze, and displays the path.
+A 2D maze generator made in [C#](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)). It cans generate a perfect (random) maze, and display a path, from start to finish.
 
 ---
 

@@ -9,7 +9,7 @@ namespace ProjetLabyrintheWPF
 {
     public partial class MainWindow : Window
     {   
-        private Labyrinthe maze = null;
+        private Maze maze = null;
 
         private int mazeSizeX = 0;
         private int mazeSizeY = 0;
@@ -21,7 +21,7 @@ namespace ProjetLabyrintheWPF
 
         private bool pathOfTheMazeDisplayed = false;
 
-        private string assetsPath = AppDomain.CurrentDomain.BaseDirectory;
+        private string assetsPath = AppDomain.CurrentDomain.BaseDirectory + "assets\\";
 
         private Stopwatch stopWatch = null;
         private Drawing draw = null;
@@ -32,14 +32,15 @@ namespace ProjetLabyrintheWPF
             InitializeComponent();
             draw = new Drawing();
             music = new Music();
+            stopWatch = new Stopwatch();
             music.PlayBGM(assetsPath + "music.wav");
         }
 
         private void WindowKeyDown(object sender, KeyEventArgs eKey)
         {   
-            if (!pathOfTheMazeDisplayed && maze != null && (eKey.Key == Key.Z || eKey.Key == Key.D || eKey.Key == Key.S || eKey.Key == Key.Q)) //maze != null to prevent user from using key input before the maze was created
+            if (!pathOfTheMazeDisplayed && maze != null && (eKey.Key == Key.W || eKey.Key == Key.A || eKey.Key == Key.S || eKey.Key == Key.D)) //maze != null to prevent user from using key input before the maze was created
             {
-                if (eKey.Key == Key.Z)
+                if (eKey.Key == Key.W)
                     maze.YouMove('N');
 
                 if (eKey.Key == Key.D)
@@ -48,7 +49,7 @@ namespace ProjetLabyrintheWPF
                 if (eKey.Key == Key.S)
                     maze.YouMove('S');
 
-                if (eKey.Key == Key.Q)
+                if (eKey.Key == Key.A)
                     maze.YouMove('W');
 
                 DisplayMaze2D(pathOfTheMazeDisplayed); //pathOfTheMazeDisplayed is false
@@ -72,7 +73,7 @@ namespace ProjetLabyrintheWPF
 
         private void CreateTheMaze()
         {
-            maze = new Labyrinthe(mazeSizeX, mazeSizeY);
+            maze = new Maze(mazeSizeX, mazeSizeY);
         }
 
         private void ButtonClickDisplayAnswer(object sender, RoutedEventArgs e)
@@ -226,7 +227,6 @@ namespace ProjetLabyrintheWPF
 
         private void StartChrono()
         {
-            stopWatch = new Stopwatch();
             stopWatch.Start();
         }
 
